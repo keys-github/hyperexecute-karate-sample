@@ -1,246 +1,115 @@
-<img height="100" alt="hyperexecute_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
+# Run Karate Tests with HyperExecute on TestMu AI (Formerly LambdaTest)
 
-HyperExecute is a smart test orchestration platform to run end-to-end Selenium tests at the fastest speed possible. HyperExecute lets you achieve an accelerated time to market by providing a test infrastructure that offers optimal speed, test orchestration, and detailed execution logs.
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://central.sonatype.com/artifact/com.intuit.karate/karate-junit5"><img src="https://img.shields.io/maven-central/v/com.intuit.karate/karate-junit5.svg?style=for-the-badge&labelColor=000000" alt="Karate version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-The overall experience helps teams test code and fix issues at a much faster pace. HyperExecute is configured using a YAML file. Instead of moving the Hub close to you, HyperExecute brings the test scripts close to the Hub!
+## Getting Started
 
-* <b>HyperExecute HomePage</b>: https://www.testmuai.com/hyperexecute
-* <b>TestMu AI HomePage</b>: https://www.testmuai.com
-* <b>TestMu AI Support</b>: [support@testmuai.com](mailto:support@testmuai.com)
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
-To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/)
+With TestMu AI (Formerly LambdaTest), you can run Karate API and UI tests using HyperExecute. This sample shows how to configure Karate + HyperExecute to run on the TestMu AI cloud.
 
-[<img alt="Try it now" width="200 px" align="center" src="images/Try it Now.svg" />](https://hyperexecute.lambdatest.com/?utm_source=github&utm_medium=repository&utm_content=java&utm_term=testng)
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
+### Prerequisites
 
-## Gitpod
+- Java JDK 11+
+- Maven 3.6+
+- A [TestMu AI](https://www.testmuai.com/) account with your username and access key
+- [HyperExecute CLI](https://www.testmuai.com/support/docs/hyperexecute-cli-run-tests-on-hyperexecute-grid/) binary for your OS
 
-Follow the below steps to run Gitpod button:
+### Setup
 
-1. Click '**Open in Gitpod**' button (You will be redirected to Login/Signup page).
-2. Login with TestMu AI credentials and it will be redirected to Gitpod editor in new tab and current tab will show hyperexecute dashboard.
-
-[<img alt="Run in Gitpod" width="200 px" align="center" src="images/Gitpod.svg" />](https://hyperexecute.lambdatest.com/hyperexecute/jobs?type=gitpod&framework=Karate)
----
-<!---If logged in, it will be redirected to Gitpod editor in new tab where current tab will show hyperexecute dashboard.
-
-If not logged in, it will be redirected to Login/Signup page and simultaneously redirected to Gitpod editor in a new tab where current tab will show hyperexecute dashboard.
-
-If not signed up, you need to sign up and simultaneously redirected to Gitpod in a new tab where current tab will show hyperexecute dashboard.--->
-
-
-# How to run Selenium automation tests on HyperExecute (using Karate framework) — TestMu AI (Formerly LambdaTest)
-
-* [Pre-requisites](#pre-requisites)
-   - [Download HyperExecute CLI](#download-hyperexecute-cli)
-   - [Configure Environment Variables](#configure-environment-variables)
-
-* [Auto-Split Execution with Karate](#auto-split-execution-with-testng)
-   - [Core](#core)
-   - [Pre Steps and Dependency Caching](#pre-steps-and-dependency-caching)
-   - [Post Steps](#post-steps)
-   - [Artifacts Management](#artifacts-management)
-   - [Test Execution](#test-execution)
-
-
-* [Secrets Management](#secrets-management)
-* [Navigation in Automation Dashboard](#navigation-in-automation-dashboard)
-
-# Pre-requisites
-
-Before using HyperExecute, you have to download HyperExecute CLI corresponding to the host OS. Along with it, you also need to export the environment variables *LT_USERNAME* and *LT_ACCESS_KEY* that are available in the [TestMu AI Profile](https://accounts.lambdatest.com/detail/profile) page.
-
-## Download HyperExecute CLI
-
-HyperExecute CLI is the CLI for interacting and running the tests on the HyperExecute Grid. The CLI provides a host of other useful features that accelerate test execution. In order to trigger tests using the CLI, you need to download the HyperExecute CLI binary corresponding to the platform (or OS) from where the tests are triggered:
-
-Also, it is recommended to download the binary in the project's parent directory. Shown below is the location from where you can download the HyperExecute CLI binary:
-
-* Mac: https://downloads.lambdatest.com/hyperexecute/darwin/hyperexecute
-* Linux: https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute
-* Windows: https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe
-
-## Configure Environment Variables
-
-Before the tests are run, please set the environment variables LT_USERNAME & LT_ACCESS_KEY from the terminal. The account details are available on your [TestMu AI Profile](https://accounts.lambdatest.com/detail/profile) page.
-
-For macOS:
+Clone and install dependencies:
 
 ```bash
-export LT_USERNAME=LT_USERNAME
-export LT_ACCESS_KEY=LT_ACCESS_KEY
+git clone https://github.com/LambdaTest/hyperexecute-karate-sample && cd hyperexecute-karate-sample
+mvn -Dmaven.test.skip=true clean install
 ```
 
-For Linux:
+Set your credentials as environment variables.
+
+**macOS / Linux:**
 
 ```bash
-export LT_USERNAME=LT_USERNAME
-export LT_ACCESS_KEY=LT_ACCESS_KEY
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+export LT_TUNNEL="YOUR_TUNNEL_NAME"
 ```
 
-For Windows:
+**Windows:**
 
 ```bash
-set LT_USERNAME=LT_USERNAME
-set LT_ACCESS_KEY=LT_ACCESS_KEY
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+set LT_TUNNEL="YOUR_TUNNEL_NAME"
 ```
 
-## Auto-Split Execution with Karate
-
-Auto-split execution mechanism lets you run tests at predefined concurrency and distribute the tests over the available infrastructure. Concurrency can be achieved at different levels - file, module, test suite, test, scenario, etc.
-
-For more information about auto-split execution, check out the [Auto-Split Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/#smart-auto-test-splitting)
-
-### Core
-
-Auto-split YAML file (*Hyperexecute.yaml*) in the repo contains the following configuration:
-
-```yaml
-globalTimeout: 150
-testSuiteTimeout: 150
-testSuiteStep: 150
-```
-
-Global timeout, testSuite timeout, and testSuite timeout are set to 150 minutes.
- 
-The *runson* key determines the platform (or operating system) on which the tests are executed. Here we have set the target OS as Linux.
-
-```yaml
-runson: linux
-```
-
-Auto-split is set to true in the YAML file.
-
-```yaml
- autosplit: true
-```
-
-*retryOnFailure* is set to true, instructing HyperExecute to retry failed command(s). The retry operation is carried out till the number of retries mentioned in *maxRetries* are exhausted or the command execution results in a *Pass*. In addition, the concurrency (i.e. number of parallel sessions) is set to 4.
-
-```yaml
-retryOnFailure: true
-maxRetries: 5
-concurrency: 4
-```
-
-### Pre Steps and Dependency Caching
-
-Dependency caching is enabled in the YAML file to ensure that the package dependencies are not downloaded in subsequent runs. The first step is to set the Key used to cache directories. The directory *m2_cache_dir* is created in the project's root directory.
-
-```yaml
-env:
-  CACHE_DIR: m2_cache_dir
-
-# Dependency caching for Windows
-cacheKey: '{{ checksum "pom.xml" }}'
-cacheDirectories:
-  - $CACHE_DIR
-```
-
-Steps (or commands) that must run before the test execution are listed in the *pre* run step. In the example, the Maven packages are downloaded in the *m2_cache_dir*. To prevent test execution at the *pre* stage, the *maven.test.skip* parameter is set to *true* so that only packages are downloaded and no test execution is performed.
-
-```yaml
-pre:
-  - mvn -Dmaven.repo.local=$CACHE_DIR -Dmaven.test.skip=true clean install
-```
-
-### Post Steps
-
-Steps (or commands) that need to run after the test execution are listed in the *post* step. In the example, we *cat* the contents of *yaml/testng_hyperexecute_autosplit_sample.yaml*
-
-```yaml
-post:
-  - curl http://localhost:8080/__admin/stop
-```
-
-The *testDiscovery* directive contains the command that gives details of the mode of execution, along with detailing the command that is used for test execution. Here, we are fetching the list of class names that would be further passed in the *testRunnerCommand*
-
-```yaml
-testDiscovery:
-  type: raw
-  mode: static
-  command: snooper  --targetOs=win --featureFilePaths=src/test/java/app --frameWork=java  | sed 's/:.*//' | uniq
-```
-
-Running the above command on the terminal will give a list of scenarios present in the *feature* files:
-
-    src/test/java/app/api/call/call-data-four.feature
-    src/test/java/app/api/call/call-data-one.feature
-    src/test/java/app/api/call/call-data-single.feature
-    src/test/java/app/api/call/call-data-two.feature
-    src/test/java/app/api/call/call-data.feature
-    src/test/java/app/api/call/call-four.feature
-    src/test/java/app/api/call/call-one.feature
-
-The *testRunnerCommand* contains the command that is used for triggering the test. The output fetched from the *testDiscoverer* command acts as an input to the *testRunner* command.
-
-```yaml
-testRunnerCommand: mvn test -Dtest=MyApiRunner -DFeaturePath="$test" -Dhub=https://<LT_USERNAME>:<LT_ACCESS_KEY>@hub.lambdatest.com/wd/hub -Dmaven.repo.local=./.m2```
-
-### Artifacts Management
-
-The *mergeArtifacts* directive (which is by default *false*) is set to *true* for merging the artifacts and combing artifacts generated under each task.
-
-The *uploadArtefacts* directive informs HyperExecute to upload artifacts [files, reports, etc.] generated after task completion. In the example, *path* consists of a regex for parsing the sure-fire (i.e. *target/surefire-reports/html*) directory that contains the HTML test reports.
-
-```yaml
-mergeArtifacts: true
-
-uploadArtefacts:
-  - name: ExecutionSnapshots
-    path:
-      - target/
-```
-
-HyperExecute also facilitates the provision to download the artifacts on your local machine. To download the artifacts, click on Artifacts button corresponding to the associated TestID.
-
-
-Now, you can download the artifacts by clicking on the Download button as shown below:
-
-
-### Test Execution
-
-The CLI option *--config* is used for providing the custom HyperExecute YAML file (i.e. *Hyperexecute.yaml* for Linux).
-
-#### Execute Karate tests using Autosplit mechanism on Linux platform
-
-Run the following command on the terminal to trigger the tests in Java files with HyperExecute platform set to Windows. The *--download-artifacts* option is used to inform HyperExecute to download the artifacts for the job. The *--force-clean-artifacts* option force cleans any existing artifacts for the project.
+### Run tests
 
 ```bash
-./hyperexecute --config Hyperexecute.yaml --force-clean-artifacts --download-artifacts
+./hyperexecute --config yaml/win/.hyperexecute_autosplit.yaml --force-clean-artifacts --download-artifacts
 ```
 
+View results on your TestMu AI dashboard.
 
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution
+### Local testing with TestMu AI Tunnel
 
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
 
-<img width="1408" alt="testng_autosplit_cli2_execution" src="https://user-images.githubusercontent.com/1688653/159758849-dd181170-b31a-4589-80ac-e0592122a0c9.png">
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
 
-## 🚀 LambdaTest is Now TestMu AI
+Add the following to your capabilities:
 
-👋 Welcome to TestMu AI, the next evolution of LambdaTest. As of January 2026, [LambdaTest is Now TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/) - we have evolved from a cross-browser testing cloud into a unified, AI-native quality engineering platform designed for the modern DevOps era.
+```js
+tunnel: true,
+```
 
-Whether you have been part of the LambdaTest community for years or are just discovering TestMu AI, our mission remains the same: to help you ship faster with high-scale test execution, autonomous testing, and deep quality analytics.
+## Contributions
 
-### 🔄 Our Rebrand Journey
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Java version, OS, and Karate version.
 
-In 2017, we introduced LambdaTest with a clear mission: to become the world's most trusted cloud testing platform. We built a scalable, high-performance test cloud that eliminated flakiness, improved developer feedback cycles, and accelerated release velocity for teams worldwide.
+## TestMu AI (Formerly LambdaTest) Community
 
-As LambdaTest grew, we expanded the platform into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the entire testing lifecycle. These capabilities enabled teams to test any stack, on any technology, at enterprise scale.
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+  
+## TestMu AI (Formerly LambdaTest) Certifications
 
-Over time, we rebuilt the architecture to be AI-native from the ground up. What began as LambdaTest's high-performance testing cloud has now evolved into TestMu AI, an AI-native, multi-agent platform redefining modern quality engineering.
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-We chose the name TestMu AI to reflect our shift towards intelligent, autonomous testing. While our identity has changed, our core technology and commitment to the testing community stay the same.
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-👉 Find [LambdaTest's New Home](https://www.testmuai.com/).
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-### 🔭 Explore TestMu AI
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+  
+## LambdaTest is Now TestMu AI
 
-The same infrastructure LambdaTest customers relied on, now delivered through autonomous AI agents.
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-- [KaneAI](https://www.testmuai.com/kane-ai/)
-- [Agent-to-Agent Testing](https://www.testmuai.com/agent-to-agent-testing/)
-- [HyperExecute](https://www.testmuai.com/hyperexecute/)
-- [Real Device Cloud](https://www.testmuai.com/real-device-cloud/)
-- [Pricing](https://www.testmuai.com/pricing/)
-- [Documentation](https://www.testmuai.com/support/docs/)
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
+
+Find the new home for [LambdaTest](https://www.testmuai.com).
+
+### How LambdaTest Evolved into TestMu AI
+
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
+
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
+
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
+
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
+
+## Support
+
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
